@@ -1,10 +1,8 @@
 
-
-'use client'
+"use client"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-
-export default function Login() {
+export default function Signup(){
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const router= useRouter()
@@ -13,7 +11,7 @@ export default function Login() {
         try {
 
             let response = await fetch(
-                'http://127.0.0.1:8000/Auth/login', {
+                'http://127.0.0.1:8000/Auth/signup', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 credentials: "include",
@@ -30,7 +28,7 @@ export default function Login() {
           
             const data = await response.json()
             console.log(data)
-            router.push('/synthese')
+            router.push('/Auth/login')
             
         }
         catch (error) {
